@@ -1,0 +1,86 @@
+package de.shiewk.widgets;
+
+import com.google.gson.JsonElement;
+import net.minecraft.client.gui.Drawable;
+import net.minecraft.client.gui.widget.ClickableWidget;
+import net.minecraft.client.gui.widget.Widget;
+import net.minecraft.text.Text;
+
+import java.util.function.Consumer;
+
+public abstract class WidgetSettingOption implements Drawable, Widget {
+    private final String id;
+    private final Text name;
+    private int x = 0;
+    private int y = 0;
+    private boolean focused = false;
+
+    protected WidgetSettingOption(String id, Text name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public final String getId() {
+        return id;
+    }
+
+    public final Text getName() {
+        return name;
+    }
+
+    public abstract JsonElement saveState();
+    public abstract void loadState(JsonElement state);
+
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        return false;
+    }
+
+    public boolean mouseReleased(double mouseX, double mouseY, int button){
+        return false;
+    }
+
+    public boolean charTyped(char chr, int modifiers) {
+        return false;
+    }
+
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        return false;
+    }
+
+    public boolean keyReleased(int keyCode, int scanCode, int modifiers) {
+        return false;
+    }
+
+    @Override
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    @Override
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    @Override
+    public int getX() {
+        return x;
+    }
+
+    @Override
+    public int getY() {
+        return y;
+    }
+
+    @Override
+    public final void forEachChild(Consumer<ClickableWidget> consumer) {
+        throw new UnsupportedOperationException();
+    }
+
+    public boolean isFocused() {
+        return focused;
+    }
+
+    public void setFocused(boolean focused) {
+        this.focused = focused;
+    }
+}
