@@ -7,6 +7,8 @@ import de.shiewk.widgets.client.WidgetManager;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.tooltip.Tooltip;
+import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.Text;
 import net.minecraft.util.Util;
 import org.jetbrains.annotations.Nullable;
@@ -194,5 +196,15 @@ public class EditWidgetPositionsScreen extends AnimatedScreen {
             }
         }
         return super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY);
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+        this.addDrawableChild(new ButtonWidget.Builder(Text.translatable("widgets.ui.editPositions.snap", alignX ? Text.translatable("gui.yes") : Text.translatable("gui.no")), button -> {
+            alignX = !alignX;
+            alignY = !alignY;
+            button.setMessage(Text.translatable("widgets.ui.editPositions.snap", alignX ? Text.translatable("gui.yes") : Text.translatable("gui.no")));
+        }).position(this.width / 2 - 75, this.height / 2 - 10).tooltip(Tooltip.of(Text.translatable("widgets.ui.editPositions.snap.help"))).build());
     }
 }
