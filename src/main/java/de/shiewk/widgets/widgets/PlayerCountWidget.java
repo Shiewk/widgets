@@ -13,7 +13,7 @@ public class PlayerCountWidget extends BasicTextWidget{
     }
 
     @Override
-    public void tick() {
+    public void tickWidget() {
         final ClientPlayNetworkHandler networkHandler = MinecraftClient.getInstance().getNetworkHandler();
         String online = networkHandler == null ? "?" : String.valueOf(networkHandler.getPlayerUuids().size());
         this.renderText = Text.literal(Text.translatable("widgets.widgets.playerCount.online", online).getString());

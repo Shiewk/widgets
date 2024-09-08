@@ -16,7 +16,7 @@ public class ServerIPWidget extends BasicTextWidget {
     private int t = 0;
 
     @Override
-    public void tick() {
+    public void tickWidget() {
         final ServerInfo serverEntry = MinecraftClient.getInstance().getCurrentServerEntry();
         if (serverEntry != null){
             this.renderText = Text.of(serverEntry.address);

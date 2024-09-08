@@ -100,7 +100,7 @@ public class ClockWidget extends BasicTextWidget {
     }
 
     @Override
-    public void tick() {
+    public void tickWidget() {
         renderText = Text.literal(dateFormat.format(Date.from(Instant.now())));
     }
 

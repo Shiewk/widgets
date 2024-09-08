@@ -70,7 +70,7 @@ public class CPSWidget extends BasicTextWidget {
     }
 
     @Override
-    public void tick() {
+    public void tickWidget() {
         int left = 0;
         int right = 0;
         int middle = 0;

@@ -15,6 +15,8 @@ import java.util.List;
 
 public abstract class BasicTextWidget extends ModWidget {
     protected Text renderText = Text.empty();
+    private int textWidthH;
+    private TextRenderer renderer = null;
 
     private static ObjectArrayList<WidgetSettingOption> getCustomSettings(List<WidgetSettingOption> otherCustomOptions) {
         final ObjectArrayList<WidgetSettingOption> list = new ObjectArrayList<>(otherCustomOptions);
@@ -46,9 +48,20 @@ public abstract class BasicTextWidget extends ModWidget {
 
     @Override
     public void render(DrawContext context, long n, TextRenderer textRenderer, int posX, int posY) {
+        renderer = textRenderer;
         context.fill(posX, posY, posX + width(), posY + height(), this.backgroundColor);
-        context.drawCenteredTextWithShadow(textRenderer, renderText, posX + (width() / 2), posY + 6, this.textColor);
+        context.drawText(textRenderer, renderText, posX + (width() / 2) - textWidthH, posY + 6, this.textColor, true);
     }
+
+    @Override
+    public final void tick() {
+        tickWidget();
+        if (renderer != null){
+            this.textWidthH = renderer.getWidth(renderText) / 2;
+        }
+    }
+
+    public abstract void tickWidget();
 
     @Override
     public void onSettingsChanged(WidgetSettings settings) {

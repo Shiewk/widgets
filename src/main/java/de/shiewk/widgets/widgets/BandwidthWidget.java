@@ -20,7 +20,7 @@ public class BandwidthWidget extends BasicTextWidget {
     private boolean dynamicColor = false;
 
     @Override
-    public void tick() {
+    public void tickWidget() {
         t++;
         if (t >= 20){
             t = 0;

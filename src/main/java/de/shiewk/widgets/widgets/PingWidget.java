@@ -22,7 +22,7 @@ public class PingWidget extends BasicTextWidget {
     private boolean dynamicColor = false;
 
     @Override
-    public void tick() {
+    public void tickWidget() {
         final ClientPlayNetworkHandler networkHandler = MinecraftClient.getInstance().getNetworkHandler();
         if (networkHandler != null){
             if (lastPingQuery < Util.getMeasuringTimeMs() - 5000){

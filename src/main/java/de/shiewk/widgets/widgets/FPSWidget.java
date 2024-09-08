@@ -12,7 +12,7 @@ public class FPSWidget extends BasicTextWidget {
     }
 
     @Override
-    public void tick() {
+    public void tickWidget() {
         this.renderText = Text.literal(MinecraftClient.getInstance().getCurrentFps() + " FPS");
     }
 
