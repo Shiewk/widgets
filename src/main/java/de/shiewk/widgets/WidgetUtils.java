@@ -1,6 +1,10 @@
 package de.shiewk.widgets;
 
+import java.util.function.BooleanSupplier;
+
 public class WidgetUtils {
+
+    public static final BooleanSupplier TRUE_SUPPLIER = () -> true;
 
     public static double translateToWidgetSettingsValue(double value, int max){
         return (value / max) * 100;

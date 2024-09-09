@@ -6,6 +6,7 @@ import net.minecraft.client.gui.widget.ClickableWidget;
 import net.minecraft.client.gui.widget.Widget;
 import net.minecraft.text.Text;
 
+import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 
 public abstract class WidgetSettingOption implements Drawable, Widget {
@@ -14,6 +15,7 @@ public abstract class WidgetSettingOption implements Drawable, Widget {
     private int x = 0;
     private int y = 0;
     private boolean focused = false;
+    private BooleanSupplier shouldShow = WidgetUtils.TRUE_SUPPLIER;
 
     protected WidgetSettingOption(String id, Text name) {
         this.id = id;
@@ -82,5 +84,14 @@ public abstract class WidgetSettingOption implements Drawable, Widget {
 
     public void setFocused(boolean focused) {
         this.focused = focused;
+    }
+
+    public boolean shouldShow(){
+        return shouldShow.getAsBoolean();
+    }
+
+    public WidgetSettingOption setShowCondition(BooleanSupplier shouldShow){
+        this.shouldShow = shouldShow;
+        return this;
     }
 }

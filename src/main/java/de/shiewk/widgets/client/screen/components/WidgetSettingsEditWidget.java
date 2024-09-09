@@ -45,6 +45,7 @@ public class WidgetSettingsEditWidget extends ScrollableWidget {
         context.getMatrices().pop();
         int y = textRenderer.fontHeight * 2 + this.height / 50 + 5;
         for (WidgetSettingOption setting : widget.getSettings().getCustomSettings()) {
+            if (!setting.shouldShow()) continue;
             if (this.width - setting.getWidth() > textRenderer.getWidth(setting.getName()) + 20){
                 setting.setX(this.getX() + this.width - setting.getWidth() - 5);
                 setting.setY(y);
