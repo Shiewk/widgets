@@ -49,5 +49,12 @@
   "widgets.widgets.cps.appearance.slash": "Split (Slash)",
   "widgets.widgets.cps.appearance.unified": "Unified",
   "widgets.ui.editPositions.snap": "Align positions: %s",
-  "widgets.ui.editPositions.snap.help": "Aligns the widget with positions of other widgets"
+  "widgets.ui.editPositions.snap.help": "Aligns the widget with positions of other widgets",
+  "widgets.widgets.basictext.width": "Widget width",
+  "widgets.widgets.basictext.height": "Widget height",
+  "widgets.widgets.basictext.alignment": "Text alignment",
+  "widgets.widgets.basictext.alignment.left": "Left",
+  "widgets.widgets.basictext.alignment.center": "Center",
+  "widgets.widgets.basictext.alignment.right": "Right",
+  "widgets.widgets.basictext.padding": "Text padding"
 }
