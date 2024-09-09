@@ -14,6 +14,7 @@ public class BandwidthWidget extends BasicTextWidget {
         super(id, List.of(
                 new ToggleWidgetSetting("dynamic_color", Text.translatable("widgets.widgets.bandwidth.dynamicColor"), true)
         ));
+        getSettings().optionById("textcolor").setShowCondition(() -> !this.dynamicColor);
     }
 
     private int t = 0;

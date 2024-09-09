@@ -18,6 +18,7 @@ public class PingWidget extends BasicTextWidget {
         super(id, List.of(
                 new ToggleWidgetSetting("dynamic_color", Text.translatable("widgets.widgets.ping.dynamicColor"), true)
         ));
+        getSettings().optionById("textcolor").setShowCondition(() -> !this.dynamicColor);
     }
     private boolean dynamicColor = false;
 
