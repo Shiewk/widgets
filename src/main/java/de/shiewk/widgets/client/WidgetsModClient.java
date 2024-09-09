@@ -16,8 +16,6 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
 
-import java.io.File;
-
 public class WidgetsModClient implements ClientModInitializer {
 
     static KeyBinding configKeyBinding;
@@ -47,8 +45,6 @@ public class WidgetsModClient implements ClientModInitializer {
                 })
             )
         );
-
-        WidgetManager.saveFileFactory = id -> new File(MinecraftClient.getInstance().runDirectory.getPath() + "/config/widgets/" + id.getNamespace() + "/" + id.getPath() + ".json");
 
         WidgetManager.register(new FPSWidget(Identifier.of(WidgetsMod.MOD_ID, "fps")));
         WidgetManager.register(new ClockWidget(Identifier.of(WidgetsMod.MOD_ID, "clock")));

@@ -7,6 +7,7 @@ import com.google.gson.stream.JsonWriter;
 import de.shiewk.widgets.ModWidget;
 import de.shiewk.widgets.WidgetsMod;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
@@ -45,7 +46,7 @@ public class WidgetManager {
         enabled.remove(widget);
     }
 
-    static Function<Identifier, File> saveFileFactory;
+    static Function<Identifier, File> saveFileFactory = id -> new File(MinecraftClient.getInstance().runDirectory.getPath() + "/config/widgets/" + id.getNamespace() + "/" + id.getPath() + ".json");;
     private static final Gson gson = new Gson();
 
     public static void saveWidgets(List<ModWidget> widgets) {
