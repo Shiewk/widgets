@@ -47,5 +47,14 @@
   "widgets.widgets.cps.appearance": "Erscheinungsbild",
   "widgets.widgets.cps.appearance.pipe": "Getrennt (Senkrechter Strich)",
   "widgets.widgets.cps.appearance.slash": "Getrennt (Schrägstrich)",
-  "widgets.widgets.cps.appearance.unified": "Vereinheitlicht"
+  "widgets.widgets.cps.appearance.unified": "Vereinheitlicht",
+  "widgets.ui.editPositions.snap": "Positionen ausrichten: %",
+  "widgets.ui.editPositions.snap.help": "Richtet die Position des Widgets mit Positionen der anderen Widgets aus",
+  "widgets.widgets.basictext.width": "Widget Breite",
+  "widgets.widgets.basictext.height": "Widget Höhe",
+  "widgets.widgets.basictext.alignment": "Text Ausrichtung",
+  "widgets.widgets.basictext.alignment.left": "Links",
+  "widgets.widgets.basictext.alignment.center": "Mitte",
+  "widgets.widgets.basictext.alignment.right": "Rechts",
+  "widgets.widgets.basictext.padding": "Textabstand"
 }
