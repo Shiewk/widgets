@@ -12,8 +12,8 @@ import net.minecraft.util.math.MathHelper;
 public class IntSliderWidgetSetting extends WidgetSettingOption {
 
     private int value;
-    private final int minValue;
-    private final int maxValue;
+    private int minValue;
+    private int maxValue;
     private boolean changed = false;
     private boolean clicked = false;
 
@@ -86,5 +86,13 @@ public class IntSliderWidgetSetting extends WidgetSettingOption {
     @Override
     public int getHeight() {
         return 15;
+    }
+
+    public void setMinValue(int minValue) {
+        this.minValue = minValue;
+    }
+
+    public void setMaxValue(int maxValue) {
+        this.maxValue = maxValue;
     }
 }

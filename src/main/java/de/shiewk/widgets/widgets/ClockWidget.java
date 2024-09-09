@@ -2,8 +2,8 @@ package de.shiewk.widgets.widgets;
 
 import de.shiewk.widgets.WidgetSettings;
 import de.shiewk.widgets.widgets.settings.EnumWidgetSetting;
+import de.shiewk.widgets.widgets.settings.IntSliderWidgetSetting;
 import de.shiewk.widgets.widgets.settings.ToggleWidgetSetting;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -13,8 +13,6 @@ import java.util.Date;
 import java.util.List;
 
 public class ClockWidget extends BasicTextWidget {
-
-    private int width = DEFAULT_WIDTH;
 
     public enum TimeOption {
         NO_TIME("none"),
@@ -90,14 +88,10 @@ public class ClockWidget extends BasicTextWidget {
                         WeekOption.NO_DAY_OF_WEEK,
                         WeekOption::getName)
         ));
+        ((IntSliderWidgetSetting) getSettings().optionById("width")).setMaxValue(80*5);
     }
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss aa EEEE");
-
-    @Override
-    public int width() {
-        return width;
-    }
 
     @Override
     public void tickWidget() {
@@ -134,7 +128,6 @@ public class ClockWidget extends BasicTextWidget {
             }
         }
         dateFormat = new SimpleDateFormat(datePattern);
-        width = Math.max(DEFAULT_WIDTH, MinecraftClient.getInstance().textRenderer.getWidth(dateFormat.format(Date.from(Instant.now()))) + 20);
     }
 
     @Override
