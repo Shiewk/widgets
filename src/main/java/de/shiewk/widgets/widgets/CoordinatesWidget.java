@@ -24,7 +24,8 @@ public class CoordinatesWidget extends ModWidget {
                 new RGBAColorWidgetSetting("backgroundcolor", Text.translatable("widgets.widgets.basictext.background"), 0, 0, 0, 80),
                 new RGBAColorWidgetSetting("textcolor", Text.translatable("widgets.widgets.basictext.textcolor"), 255, 255, 255, 255),
                 new IntSliderWidgetSetting("width", Text.translatable("widgets.widgets.basictext.width"), 10, WIDTH, 80*3),
-                new IntSliderWidgetSetting("padding", Text.translatable("widgets.widgets.basictext.padding"), 0, 5, 20)
+                new IntSliderWidgetSetting("paddingX", Text.translatable("widgets.widgets.basictext.paddingX"), 0, 5, 20),
+                new IntSliderWidgetSetting("paddingY", Text.translatable("widgets.widgets.basictext.paddingY"), 0, 5, 20)
         ));
     }
 
@@ -34,23 +35,22 @@ public class CoordinatesWidget extends ModWidget {
     @Override
     public void render(DrawContext context, long measuringTimeNano, TextRenderer textRenderer, int posX, int posY) {
         context.fill(posX, posY, posX + width(), posY + height(), this.backgroundColor);
-        final int padding = this.padding;
-        int y = padding;
+        int y = this.paddingY;
         if (showX){
             y++;
-            context.drawText(textRenderer, "X: ", posX + padding, posY + y, textColor, true);
+            context.drawText(textRenderer, "X: ", posX + paddingX, posY + y, textColor, true);
             context.drawText(textRenderer, textX, posX + txc, posY + y, textColor, true);
             y += textRenderer.fontHeight + 1;
         }
         if (showY){
             y++;
-            context.drawText(textRenderer, "Y: ", posX + padding, posY + y, textColor, true);
+            context.drawText(textRenderer, "Y: ", posX + paddingX, posY + y, textColor, true);
             context.drawText(textRenderer, textY, posX + tyc, posY + y, textColor, true);
             y += textRenderer.fontHeight + 1;
         }
         if (showZ){
             y++;
-            context.drawText(textRenderer, "Z: ", posX + padding, posY + y, textColor, true);
+            context.drawText(textRenderer, "Z: ", posX + paddingX, posY + y, textColor, true);
             context.drawText(textRenderer, textZ, posX + tzc, posY + y, textColor, true);
         }
     }
@@ -58,9 +58,9 @@ public class CoordinatesWidget extends ModWidget {
     @Override
     public void tick() {
         final TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;
-        txc = width() - textRenderer.getWidth(textX) - padding;
-        tyc = width() - textRenderer.getWidth(textY) - padding;
-        tzc = width() - textRenderer.getWidth(textZ) - padding;
+        txc = width() - textRenderer.getWidth(textX) - paddingX;
+        tyc = width() - textRenderer.getWidth(textY) - paddingX;
+        tzc = width() - textRenderer.getWidth(textZ) - paddingX;
 
         final ClientPlayerEntity player = MinecraftClient.getInstance().player;
         if (player == null){
@@ -90,7 +90,7 @@ public class CoordinatesWidget extends ModWidget {
             DEFAULT_BACKGROUND_COLOR = new Color(0, 0, 0, 80).getRGB(),
             DEFAULT_TEXT_COLOR = new Color(255, 255 ,255, 255).getRGB();
 
-    protected int backgroundColor = DEFAULT_BACKGROUND_COLOR, textColor = DEFAULT_TEXT_COLOR, padding = PADDING, width = WIDTH;
+    protected int backgroundColor = DEFAULT_BACKGROUND_COLOR, textColor = DEFAULT_TEXT_COLOR, paddingX = PADDING, paddingY = PADDING, width = WIDTH;
     protected boolean showX = true, showY = true, showZ = true;
 
     @Override
@@ -100,18 +100,19 @@ public class CoordinatesWidget extends ModWidget {
         this.showX = ((ToggleWidgetSetting) settings.optionById("x")).getValue();
         this.showY = ((ToggleWidgetSetting) settings.optionById("y")).getValue();
         this.showZ = ((ToggleWidgetSetting) settings.optionById("z")).getValue();
-        this.padding = ((IntSliderWidgetSetting) settings.optionById("padding")).getValue();
+        this.paddingX = ((IntSliderWidgetSetting) settings.optionById("paddingX")).getValue();
+        this.paddingY = ((IntSliderWidgetSetting) settings.optionById("paddingY")).getValue();
         this.width = ((IntSliderWidgetSetting) settings.optionById("width")).getValue();
     }
 
     @Override
     public int width() {
-        return width + padding * 2;
+        return width + paddingX * 2;
     }
 
     @Override
     public int height() {
-        int height = 2 * padding;
+        int height = 2 * paddingY;
         if (showX) height += 11;
         if (showY) height += 11;
         if (showZ) height += 11;

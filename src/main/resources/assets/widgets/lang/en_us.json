@@ -56,5 +56,6 @@
   "widgets.widgets.basictext.alignment.left": "Left",
   "widgets.widgets.basictext.alignment.center": "Center",
   "widgets.widgets.basictext.alignment.right": "Right",
-  "widgets.widgets.basictext.padding": "Text padding"
+  "widgets.widgets.basictext.paddingX": "Text padding X",
+  "widgets.widgets.basictext.paddingY": "Text padding Y"
 }
