@@ -23,11 +23,11 @@ There are three ways to open the widget settings:
 
 Once you've opened the settings, you will see something like this:
 
-![Widget Settings menu](https://github.com/user-attachments/assets/a8f8ac2d-6077-4de9-bf77-2968f8b7dbcf)
+![Widget Settings menu](https://github.com/user-attachments/assets/286632c6-5462-4548-8240-45ffda8e59e2)
 
 You can now enable the widgets you want to enable, or click on them to view their additional settings, as you can see here:
 
-![CPS Widget Settings](https://github.com/user-attachments/assets/3703abb2-5f51-42dc-90e4-5847a9e0cc73)
+![CPS Widget Settings](https://github.com/user-attachments/assets/2756660d-0d0e-47f9-8605-717cbeb38707)
 
 When you're done with configuring which widgets you want to enable and their settings, click the "Edit Layout" button in the bottom right corner.
 
