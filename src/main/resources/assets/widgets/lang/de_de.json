@@ -57,5 +57,13 @@
   "widgets.widgets.basictext.alignment.center": "Mitte",
   "widgets.widgets.basictext.alignment.right": "Rechts",
   "widgets.widgets.basictext.paddingX": "Textabstand X",
-  "widgets.widgets.basictext.paddingY": "Textabstand Y"
+  "widgets.widgets.basictext.paddingY": "Textabstand Y",
+  "widgets.widgets.playtime": "Spielzeit",
+  "widgets.widgets.playtime.description": "Zeigt die Spielzeit der aktuellen Sitzung an.",
+  "widgets.widgets.playtime.playtime": "Spielzeit: %s",
+  "widgets.widgets.playtime.played": "%s gespielt",
+  "widgets.widgets.playtime.labelStyle": "Beschriftungsstil",
+  "widgets.widgets.playtime.labelStyle.none": "Keine Beschriftung",
+  "widgets.widgets.playtime.labelStyle.playtime": "Spielzeit: Zeit",
+  "widgets.widgets.playtime.labelStyle.played": "Zeit gespielt"
 }

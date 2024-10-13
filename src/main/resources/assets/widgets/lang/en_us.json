@@ -57,5 +57,13 @@
   "widgets.widgets.basictext.alignment.center": "Center",
   "widgets.widgets.basictext.alignment.right": "Right",
   "widgets.widgets.basictext.paddingX": "Text padding X",
-  "widgets.widgets.basictext.paddingY": "Text padding Y"
+  "widgets.widgets.basictext.paddingY": "Text padding Y",
+  "widgets.widgets.playtime": "Playtime",
+  "widgets.widgets.playtime.description": "Shows the current session's uptime",
+  "widgets.widgets.playtime.playtime": "Playtime: %s",
+  "widgets.widgets.playtime.played": "%s played",
+  "widgets.widgets.playtime.labelStyle": "Label Style",
+  "widgets.widgets.playtime.labelStyle.none": "No label",
+  "widgets.widgets.playtime.labelStyle.playtime": "Playtime: Time",
+  "widgets.widgets.playtime.labelStyle.played": "Time played"
 }
