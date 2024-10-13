@@ -49,7 +49,7 @@ public class ToggleWidgetSetting extends WidgetSettingOption {
         int thumbLoc = (Util.getMeasuringTimeNano() - toggleTime) < 300000000f ?
                 (int) (getX() + MathHelper.lerp(WidgetUtils.computeEasing((Util.getMeasuringTimeNano() - toggleTime) / 300000000f),
                         value ? 2 : getWidth() - 4 - 12,
-                        value ? getWidth() - 4 - 12 : 2))
+                        value ? getWidth() - 4 - 12 : 4))
                 : value ? getX() + getWidth() - 4 - 12 : getX() + 4;
         context.fill(getX() + 2, getY() + 2, getX() + getWidth() - 2, getY() + getHeight() - 2, col);
         context.fill(thumbLoc, getY() + 4, thumbLoc + 12, getY() + getHeight() - 4, thumb);
