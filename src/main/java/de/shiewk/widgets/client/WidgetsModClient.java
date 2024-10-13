@@ -55,5 +55,6 @@ public class WidgetsModClient implements ClientModInitializer {
         WidgetManager.register(new PlayerCountWidget(Identifier.of(WidgetsMod.MOD_ID, "player_count")));
         WidgetManager.register(new CPSWidget(Identifier.of(WidgetsMod.MOD_ID, "cps")));
         WidgetManager.register(new PlayTimeWidget(Identifier.of(WidgetsMod.MOD_ID, "playtime")));
+        WidgetManager.register(new MemoryUsageWidget(Identifier.of(WidgetsMod.MOD_ID, "memory")));
     }
 }

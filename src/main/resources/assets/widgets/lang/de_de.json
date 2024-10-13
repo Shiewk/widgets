@@ -65,5 +65,10 @@
   "widgets.widgets.playtime.labelStyle": "Beschriftungsstil",
   "widgets.widgets.playtime.labelStyle.none": "Keine Beschriftung",
   "widgets.widgets.playtime.labelStyle.playtime": "Spielzeit: Zeit",
-  "widgets.widgets.playtime.labelStyle.played": "Zeit gespielt"
+  "widgets.widgets.playtime.labelStyle.played": "Zeit gespielt",
+  "widgets.widgets.memory": "Arbeitsspeicher",
+  "widgets.widgets.memory.description": "Zeigt die momentane Arbeitsspeicherauslastung des Spiels an.",
+  "widgets.widgets.memory.withLabel": "Arbeitsspeicher: %s",
+  "widgets.widgets.memory.showPercentage": "Prozentsatz anzeigen",
+  "widgets.widgets.memory.showLabel": "Beschriftung anzeigen"
 }

@@ -65,5 +65,10 @@
   "widgets.widgets.playtime.labelStyle": "Label Style",
   "widgets.widgets.playtime.labelStyle.none": "No label",
   "widgets.widgets.playtime.labelStyle.playtime": "Playtime: Time",
-  "widgets.widgets.playtime.labelStyle.played": "Time played"
+  "widgets.widgets.playtime.labelStyle.played": "Time played",
+  "widgets.widgets.memory": "Memory usage",
+  "widgets.widgets.memory.description": "Shows the current memory usage of the game.",
+  "widgets.widgets.memory.withLabel": "Memory: %s",
+  "widgets.widgets.memory.showPercentage": "Show percentage",
+  "widgets.widgets.memory.showLabel": "Show label"
 }
