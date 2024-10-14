@@ -56,6 +56,7 @@
   "widgets.widgets.basictext.alignment.left": "Links",
   "widgets.widgets.basictext.alignment.center": "Mitte",
   "widgets.widgets.basictext.alignment.right": "Rechts",
+  "widgets.widgets.basictext.padding": "Textabstand",
   "widgets.widgets.basictext.paddingX": "Textabstand X",
   "widgets.widgets.basictext.paddingY": "Textabstand Y",
   "widgets.widgets.playtime": "Spielzeit",
