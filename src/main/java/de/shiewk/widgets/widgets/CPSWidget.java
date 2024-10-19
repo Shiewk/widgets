@@ -6,6 +6,7 @@ import de.shiewk.widgets.widgets.settings.ToggleWidgetSetting;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Util;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -13,8 +14,10 @@ import java.util.List;
 public class CPSWidget extends BasicTextWidget {
 
     public static class Click {
-        private int ticks = 0;
+        public int ticks = 0;
+        public final long expiresAt = Util.getMeasuringTimeMs() + 1000;
 
+        @Deprecated(forRemoval = true, since = "1.2.1")
         public int tick(){
             return ticks++;
         }
@@ -74,16 +77,17 @@ public class CPSWidget extends BasicTextWidget {
         int left = 0;
         int right = 0;
         int middle = 0;
+        long mtime = Util.getMeasuringTimeMs();
         if (countLeftClicks) {
-            leftClicks.removeIf(click -> click.tick() >= 20);
+            leftClicks.removeIf(click -> click.expiresAt <= mtime);
             left = leftClicks.size();
         }
         if (countRightClicks) {
-            rightClicks.removeIf(click -> click.tick() >= 20);
+            rightClicks.removeIf(click -> click.expiresAt <= mtime);
             right = rightClicks.size();
         }
         if (countMiddleClicks) {
-            middleClicks.removeIf(click -> click.tick() >= 20);
+            middleClicks.removeIf(click -> click.expiresAt <= mtime);
             middle = middleClicks.size();
         }
         switch (appearance){
