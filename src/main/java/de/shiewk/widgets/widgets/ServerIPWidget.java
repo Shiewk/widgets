@@ -1,5 +1,7 @@
 package de.shiewk.widgets.widgets;
 
+import de.shiewk.widgets.WidgetSettings;
+import de.shiewk.widgets.widgets.settings.ToggleWidgetSetting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ServerInfo;
 import net.minecraft.text.Text;
@@ -9,11 +11,16 @@ import java.util.List;
 
 public class ServerIPWidget extends BasicTextWidget {
     public ServerIPWidget(Identifier id) {
-        super(id, List.of());
+        super(id, List.of(
+                new ToggleWidgetSetting("dynamicwidth", Text.translatable("widgets.widgets.serverIP.dynamicWidth"), true)
+        ));
+        getSettings().optionById("width").setShowCondition(() -> !this.dynamicWidth);
     }
 
     private int width;
     private int t = 0;
+
+    private boolean dynamicWidth = true;
 
     @Override
     public void tickWidget() {
@@ -32,7 +39,7 @@ public class ServerIPWidget extends BasicTextWidget {
 
     @Override
     public int width() {
-        return Math.max(super.width(), this.width);
+        return dynamicWidth ? this.width : super.width();
     }
 
     @Override
@@ -43,5 +50,11 @@ public class ServerIPWidget extends BasicTextWidget {
     @Override
     public Text getDescription() {
         return Text.translatable("widgets.widgets.serverIP.description");
+    }
+
+    @Override
+    public void onSettingsChanged(WidgetSettings settings) {
+        super.onSettingsChanged(settings);
+        this.dynamicWidth = ((ToggleWidgetSetting) settings.optionById("dynamicwidth")).getValue();
     }
 }

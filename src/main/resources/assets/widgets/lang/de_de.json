@@ -71,5 +71,6 @@
   "widgets.widgets.memory.description": "Zeigt die momentane Arbeitsspeicherauslastung des Spiels an.",
   "widgets.widgets.memory.withLabel": "Arbeitsspeicher: %s",
   "widgets.widgets.memory.showPercentage": "Prozentsatz anzeigen",
-  "widgets.widgets.memory.showLabel": "Beschriftung anzeigen"
+  "widgets.widgets.memory.showLabel": "Beschriftung anzeigen",
+  "widgets.widgets.serverIP.dynamicWidth": "Widget-Breite dynamisch festlegen"
 }
