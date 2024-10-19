@@ -22,18 +22,15 @@ public class BandwidthWidget extends BasicTextWidget {
 
     @Override
     public void tickWidget() {
+        float tickRate = 20f;
+        MinecraftClient client = MinecraftClient.getInstance();
+        if (client.world != null) {
+            tickRate = client.world.getTickManager().getTickRate();
+        }
         t++;
-        if (t >= 20){
+        if (t >= tickRate){
             t = 0;
-            final MultiValueDebugSampleLogImpl packetSizeLog = MinecraftClient.getInstance().getDebugHud().getPacketSizeLog();
-            final int logLength = packetSizeLog.getLength();
-            final int avgCompileLength = 60;
-            long size = 0;
-            for (int i = logLength-1; i > logLength-avgCompileLength; i--) {
-                if (i < 0) break;
-                size += packetSizeLog.get(i);
-            }
-            long avgBytesPerSecond = size / avgCompileLength * 20;
+            long avgBytesPerSecond = getAvgBytesPerSecond(client, tickRate);
             this.renderText = Text.of(formatByteSize(avgBytesPerSecond));
             if (this.dynamicColor){
                 if (avgBytesPerSecond < 100000){
@@ -45,6 +42,18 @@ public class BandwidthWidget extends BasicTextWidget {
                 }
             }
         }
+    }
+
+    private static long getAvgBytesPerSecond(MinecraftClient client, float tickRate) {
+        final MultiValueDebugSampleLogImpl packetSizeLog = client.getDebugHud().getPacketSizeLog();
+        final int logLength = packetSizeLog.getLength();
+        final int avgCompileLength = (int) (3 * tickRate);
+        long size = 0;
+        for (int i = logLength-1; i > logLength-avgCompileLength; i--) {
+            if (i < 0) break;
+            size += packetSizeLog.get(i);
+        }
+        return (long) ((float) size / avgCompileLength * tickRate);
     }
 
     private String formatByteSize(long bytes) {
