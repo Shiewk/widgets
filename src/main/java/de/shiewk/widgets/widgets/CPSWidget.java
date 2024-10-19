@@ -31,6 +31,16 @@ public class CPSWidget extends BasicTextWidget {
     private static final ObjectArrayList<Click> middleClicks = new ObjectArrayList<>();
     private static final ObjectArrayList<Click> rightClicks = new ObjectArrayList<>();
 
+    public static int getCPSLeft() {
+        return leftClicks.size();
+    }
+    public static int getCPSMiddle() {
+        return middleClicks.size();
+    }
+    public static int getCPSRight() {
+        return rightClicks.size();
+    }
+
     private Appearance appearance = Appearance.UNIFIED;
 
     public enum Appearance {
