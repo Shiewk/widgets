@@ -48,7 +48,7 @@
   "widgets.widgets.cps.appearance.pipe": "Getrennt (Senkrechter Strich)",
   "widgets.widgets.cps.appearance.slash": "Getrennt (Schrägstrich)",
   "widgets.widgets.cps.appearance.unified": "Vereinheitlicht",
-  "widgets.ui.editPositions.snap": "Positionen ausrichten: %",
+  "widgets.ui.editPositions.snap": "Positionen ausrichten: %s",
   "widgets.ui.editPositions.snap.help": "Richtet die Position des Widgets mit Positionen der anderen Widgets aus",
   "widgets.widgets.basictext.width": "Widget Breite",
   "widgets.widgets.basictext.height": "Widget Höhe",
