@@ -24,6 +24,17 @@ public class IntSliderWidgetSetting extends WidgetSettingOption {
         this.maxValue = maxValue;
     }
 
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        if (maxValue > value && keyCode == 262) { // right arrow key
+            value++;
+            return true;
+        } else if (minValue < value && keyCode == 263){ // left arrow key
+            value--;
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public JsonElement saveState() {
