@@ -72,5 +72,13 @@
   "widgets.widgets.memory.withLabel": "Memory: %s",
   "widgets.widgets.memory.showPercentage": "Show percentage",
   "widgets.widgets.memory.showLabel": "Show label",
-  "widgets.widgets.serverIP.dynamicWidth": "Dynamically set widget width"
+  "widgets.widgets.serverIP.dynamicWidth": "Dynamically set widget width",
+  "widgets.widgets.keystrokes.showJumpKey": "Show Jump Key",
+  "widgets.widgets.common.sizePercent": "Widget size (%)",
+  "widgets.widgets.keystrokes.colorBackgroundPressed": "Background color (key pressed)",
+  "widgets.widgets.keystrokes.colorBackgroundUnpressed": "Background color (key not pressed)",
+  "widgets.widgets.keystrokes.colorKeyPressed": "Key color (pressed)",
+  "widgets.widgets.keystrokes.colorKeyUnpressed": "Key color (not pressed)",
+  "widgets.widgets.keystrokes": "Keystrokes",
+  "widgets.widgets.keystrokes.description": "Shows which keys you are currently pressing."
 }

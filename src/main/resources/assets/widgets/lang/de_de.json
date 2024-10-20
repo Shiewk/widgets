@@ -72,5 +72,13 @@
   "widgets.widgets.memory.withLabel": "Arbeitsspeicher: %s",
   "widgets.widgets.memory.showPercentage": "Prozentsatz anzeigen",
   "widgets.widgets.memory.showLabel": "Beschriftung anzeigen",
-  "widgets.widgets.serverIP.dynamicWidth": "Widget-Breite dynamisch festlegen"
+  "widgets.widgets.serverIP.dynamicWidth": "Widget-Breite dynamisch festlegen",
+  "widgets.widgets.keystrokes.showJumpKey": "Sprungtaste anzeigen",
+  "widgets.widgets.common.sizePercent": "Widgetgröße (%)",
+  "widgets.widgets.keystrokes.colorBackgroundPressed": "Hintergrundfarbe (Taste gedrückt)",
+  "widgets.widgets.keystrokes.colorBackgroundUnpressed": "Hintergrundfarbe (Taste nicht gedrückt)",
+  "widgets.widgets.keystrokes.colorKeyPressed": "Farbe der Taste (gedrückt)",
+  "widgets.widgets.keystrokes.colorKeyUnpressed": "Farbe der Taste (nicht gedrückt)",
+  "widgets.widgets.keystrokes": "Keystrokes",
+  "widgets.widgets.keystrokes.description": "Zeigt an, welche Tasten du momentan drückst."
 }
