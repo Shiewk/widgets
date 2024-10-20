@@ -32,6 +32,11 @@ public class EditWidgetPositionsScreen extends AnimatedScreen {
             public double getY(int my) {
                 return y;
             }
+
+        @Override
+        public float getScaleFactor() {
+            return 1f;
+        }
     }
 
     private final Screen parent;
@@ -58,7 +63,7 @@ public class EditWidgetPositionsScreen extends AnimatedScreen {
         for (Dimensionable rect : this.getAlignments(widget)) {
             if (rect == widget) continue;
             final double nwx = rect.getX(this.width);
-            final double nww = rect.width();
+            final double nww = rect.width() * rect.getScaleFactor();
             if (endX < nwx + factor && endX > nwx - factor){
                 return new AlignResult(nwx - width, true);
             } else if (x < nwx + factor && x > nwx - factor){
@@ -81,7 +86,7 @@ public class EditWidgetPositionsScreen extends AnimatedScreen {
         alignments.add(new Alignment(this.width / 2, this.height / 2, this.width / 2 - 2, this.height / 2 - 2));
         alignments.add(new Alignment(2, this.height / 2, this.width / 2 - 2, this.height / 2 - 2));
         alignments.add(new Alignment(this.width / 2, 2, this.width / 2 - 2, this.height / 2 - 2));
-        alignments.add(new Alignment(this.width / 2 - rel.width() / 2, this.height / 2 - rel.height() / 2, rel.width(), rel.height()));
+        alignments.add(new Alignment((int) ((float) this.width / 2 - (rel.width() * rel.getScaleFactor()) / 2), (int) ((float) this.height / 2 - (rel.height() * rel.getScaleFactor()) / 2), (int) (rel.width() * rel.getScaleFactor()), (int) (rel.height() * rel.getScaleFactor())));
         return alignments;
     }
 
@@ -92,7 +97,7 @@ public class EditWidgetPositionsScreen extends AnimatedScreen {
         for (Dimensionable rect : this.getAlignments(widget)) {
             if (rect == widget) continue;
             final double nwy = rect.getY(this.height);
-            final double nwh = rect.height();
+            final double nwh = rect.height() * rect.getScaleFactor();
             if (endY < nwy + factor && endY > nwy - factor){
                 return new AlignResult(nwy - height, true);
             } else if (y < nwy + factor && y > nwy - factor){
@@ -115,9 +120,9 @@ public class EditWidgetPositionsScreen extends AnimatedScreen {
         assert client != null;
         for (ModWidget widget : WidgetManager.getEnabledWidgets()) {
             final WidgetSettings settings = widget.getSettings();
-            final int ww = widget.width();
+            final int ww = (int) (widget.width() * widget.getScaleFactor());
             double wx = Math.min(translateToScreen(settings.posX, this.width), this.width - ww);
-            final int wh = widget.height();
+            final int wh = (int) (widget.height() * widget.getScaleFactor());
             double wy = Math.min(translateToScreen(settings.posY, this.height), this.height - wh);
             if (selectedWidget == widget){
                 final AlignResult alignedX = alignX(wx, ww, widget);
@@ -151,13 +156,13 @@ public class EditWidgetPositionsScreen extends AnimatedScreen {
     @Override
     public boolean mouseReleased(double mouseX, double mouseY, int button) {
         if (button == 0 && selectedWidget != null){
-            final AlignResult alignedX = alignX(translateToScreen(selectedWidget.getSettings().posX, this.width), selectedWidget.width(), selectedWidget);
+            final AlignResult alignedX = alignX(translateToScreen(selectedWidget.getSettings().posX, this.width), (int) (selectedWidget.width() * selectedWidget.getScaleFactor()), selectedWidget);
             if (alignedX != null){
-                selectedWidget.getSettings().setPosX(translateToWidgetSettingsValue(alignedX.result(), this.width), selectedWidget.width(), this.width);
+                selectedWidget.getSettings().setPosX(translateToWidgetSettingsValue(alignedX.result(), this.width), (int) (selectedWidget.width() * selectedWidget.getScaleFactor()), this.width);
             }
-            final AlignResult alignedY = alignY(translateToScreen(selectedWidget.getSettings().posY, this.height), selectedWidget.height(), selectedWidget);
+            final AlignResult alignedY = alignY(translateToScreen(selectedWidget.getSettings().posY, this.height), (int) (selectedWidget.height() * selectedWidget.getScaleFactor()), selectedWidget);
             if (alignedY != null){
-                selectedWidget.getSettings().setPosY(translateToWidgetSettingsValue(alignedY.result(), this.height), selectedWidget.height(), this.height);
+                selectedWidget.getSettings().setPosY(translateToWidgetSettingsValue(alignedY.result(), this.height), (int) (selectedWidget.height() * selectedWidget.getScaleFactor()), this.height);
             }
             onEdit.accept(selectedWidget);
             selectedWidget = null;
@@ -180,9 +185,9 @@ public class EditWidgetPositionsScreen extends AnimatedScreen {
             final ModWidget widget = selectedWidget;
             if (widget != null){
                 final WidgetSettings settings = widget.getSettings();
-                final int ww = widget.width();
+                final int ww = (int) (widget.width() * widget.getScaleFactor());
                 final int wx = (int) Math.min(translateToScreen(settings.posX, this.width), this.width - ww);
-                final int wh = widget.height();
+                final int wh = (int) (widget.height() * widget.getScaleFactor());
                 final int wy = (int) Math.min(translateToScreen(settings.posY, this.height), this.height - wh);
                 if (mouseX <= wx + ww + deltaX && mouseX >= wx + deltaX){
                     if (mouseY <= wy + wh + deltaY && mouseY >= wy + deltaY){

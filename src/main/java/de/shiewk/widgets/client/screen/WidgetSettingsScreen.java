@@ -31,7 +31,7 @@ public class WidgetSettingsScreen extends AnimatedScreen {
     @Override
     public void renderScreenContents(DrawContext context, int mouseX, int mouseY, float delta) {
         context.drawText(textRenderer, previewText, this.width * 3 / 4 - textRenderer.getWidth(previewText) / 2, this.height / 50, 0xffffffff, false);
-        widget.render(context, Util.getMeasuringTimeNano(), textRenderer, this.width * 3 / 4 - widget.width() / 2, this.height / 2 - widget.height() / 2);
+        widget.render(context, Util.getMeasuringTimeNano(), textRenderer, (int) ((float) (this.width * 3) / 4 - (widget.width() * widget.getScaleFactor()) / 2), (int) ((float) this.height / 2 - (widget.height() * widget.getScaleFactor()) / 2));
     }
 
     @Override

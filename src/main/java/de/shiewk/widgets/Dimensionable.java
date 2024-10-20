@@ -5,4 +5,5 @@ public interface Dimensionable {
     int height();
     double getX(int mx);
     double getY(int my);
+    float getScaleFactor();
 }

@@ -9,6 +9,7 @@ import de.shiewk.widgets.widgets.settings.RGBAColorWidgetSetting;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -45,6 +46,7 @@ public abstract class BasicTextWidget extends ModWidget {
         list.add(new RGBAColorWidgetSetting("textcolor", Text.translatable("widgets.widgets.basictext.textcolor"), 255, 255, 255, 255));
         list.add(new IntSliderWidgetSetting("width", Text.translatable("widgets.widgets.basictext.width"), 10, DEFAULT_WIDTH, 80*3));
         list.add(new IntSliderWidgetSetting("height", Text.translatable("widgets.widgets.basictext.height"), 9, DEFAULT_HEIGHT, 80));
+        list.add(new IntSliderWidgetSetting("size", Text.translatable("widgets.widgets.common.sizePercent"), 25, 100, 400));
         list.add(new EnumWidgetSetting<>("alignment", Text.translatable("widgets.widgets.basictext.alignment"), TextAlignment.class, TextAlignment.CENTER, TextAlignment::text));
         list.add(new IntSliderWidgetSetting("padding", Text.translatable("widgets.widgets.basictext.padding"), 0, 5, 20));
         return list;
@@ -59,6 +61,8 @@ public abstract class BasicTextWidget extends ModWidget {
             DEFAULT_HEIGHT = 9 + 12,
             DEFAULT_BACKGROUND_COLOR = new Color(0, 0, 0, 80).getRGB(),
             DEFAULT_TEXT_COLOR = new Color(255, 255 ,255, 255).getRGB();
+
+    protected float size = 2f;
 
     protected int backgroundColor = DEFAULT_BACKGROUND_COLOR, textColor = DEFAULT_TEXT_COLOR, width = DEFAULT_WIDTH, height = DEFAULT_HEIGHT;
     protected TextAlignment textAlignment = TextAlignment.CENTER;
@@ -75,9 +79,21 @@ public abstract class BasicTextWidget extends ModWidget {
 
     @Override
     public void render(DrawContext context, long n, TextRenderer textRenderer, int posX, int posY) {
+        MatrixStack matrices = context.getMatrices();
+        if (size != 1f){
+            matrices.push();
+            matrices.translate(-(size-1) * posX, -(size-1) * posY, 0);
+            matrices.scale(size, size, 1);
+        }
         renderer = textRenderer;
         context.fill(posX, posY, posX + width(), posY + height(), this.backgroundColor);
         context.drawText(textRenderer, renderText, posX + textX, posY + textY, this.textColor, true);
+        if (size != 1f) matrices.pop();
+    }
+
+    @Override
+    public float getScaleFactor() {
+        return size;
     }
 
     @Override
@@ -104,5 +120,6 @@ public abstract class BasicTextWidget extends ModWidget {
         this.height = ((IntSliderWidgetSetting) settings.optionById("height")).getValue();
         this.textAlignment = (TextAlignment) ((EnumWidgetSetting<?>) settings.optionById("alignment")).getValue();
         this.padding = ((IntSliderWidgetSetting) settings.optionById("padding")).getValue();
+        this.size = 0.01f * ((IntSliderWidgetSetting) settings.optionById("size")).getValue();
     }
 }

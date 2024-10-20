@@ -41,8 +41,8 @@ public class WidgetRenderer implements HudRenderCallback, ClientTickEvents.Start
                     drawContext,
                     timeNano,
                     textRenderer,
-                    (int) Math.round(Math.min(translateToScreen(settings.posX, windowWidth), windowWidth - widget.width())),
-                    (int) Math.round(Math.min(translateToScreen(settings.posY, windowHeight), windowHeight - widget.height()))
+                    (int) Math.round(Math.min(translateToScreen(settings.posX, windowWidth), windowWidth - (widget.width() * widget.getScaleFactor()))),
+                    (int) Math.round(Math.min(translateToScreen(settings.posY, windowHeight), windowHeight - (widget.height() * widget.getScaleFactor())))
             );
             profiler.pop();
         }

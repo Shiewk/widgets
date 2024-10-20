@@ -19,6 +19,10 @@ public abstract class ModWidget implements Dimensionable {
         this.settings = WidgetSettings.ofId(id, customSettings);
     }
 
+    public float getScaleFactor(){
+        return 1f;
+    }
+
     public final Identifier getId() {
         return id;
     }
